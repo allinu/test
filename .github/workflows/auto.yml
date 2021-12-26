@@ -32,6 +32,7 @@ jobs:
       - run: |
           echo "$PWD" && ls -al
   build:
+    needs: get_source
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
@@ -42,6 +43,7 @@ jobs:
           cache: 'yarn'
           cache-dependency-path: src/yarn.lock
       - run: |
+          echo "$PWD" && ls -al
           cd /home/runner/work/TYPE/TYPE/src
           yarn
           yarn build
